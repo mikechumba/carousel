@@ -30,7 +30,7 @@
   }
 }
 
-button {
+.main-btn {
   --border-size: 21px;
   --border-size-pointer: 27px;
   --content-size: 20px;
@@ -79,6 +79,27 @@ button {
       border-top: var(--content-size) solid transparent;
       border-bottom: var(--content-size) solid transparent;
       border-left: var(--content-size-pointer) solid var(--color);
+    }
+  }
+}
+
+.selectors {
+  display: flex; 
+  flex-flow: row nowrap;
+  justify-content: center;
+  width: 100%;
+  gap: 1rem;
+  position: absolute;
+  bottom: 0.75rem;
+  button {
+    width: 10px;
+    height: 10px;
+    background: transparent;
+    border: 1px solid white;
+    border-radius: 50%;
+    cursor: pointer;
+    &.active {
+      background: white;
     }
   }
 }

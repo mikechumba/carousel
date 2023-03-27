@@ -15,6 +15,20 @@ const renderCarousel = (images) => {
     container.appendChild(slide)
   });
 
+
+  renderImageSelectors((images || []).length)
+}
+
+const renderImageSelectors = (count) => {
+  const container = document.querySelector('.selectors');
+  for (i = 0; i < count; i++) {
+    const selector = document.createElement('button');
+    selector.setAttribute('data-index', i);
+    if (i === activeSlide) {
+      selector.setAttribute('class', 'active')
+    }
+    container.appendChild(selector);
+  }
 }
 
 window.onload = async () => {
