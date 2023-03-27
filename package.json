@@ -5,8 +5,7 @@
   "scripts": {
     "start": "parcel",
     "build": "parcel build",
-    "predeploy": "rm -rf dist/* && parcel build",
-    "deploy": "gh-pages -d dist"
+    "production": "parcel build src/index.html"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "2.8.3",

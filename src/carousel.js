@@ -20,7 +20,7 @@ const renderCarousel = (images) => {
 
 const renderImageSelectors = (count) => {
   const container = document.querySelector('.selectors');
-  for (i = 0; i < count; i++) {
+  for (let i = 0; i < count; i++) {
     const selector = document.createElement('button');
     selector.setAttribute('data-index', i);
     if (i === activeSlide) {
