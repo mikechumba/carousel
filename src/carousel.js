@@ -1,6 +1,14 @@
 import { fetchData } from "./api";
 
 let activeSlide = 0;
+let interval;
+
+const startTimer = (count) => {
+  interval = setInterval(() => {
+    const nextSlide = activeSlide + 1 === count ? 0 : activeSlide + 1;
+    changeSlide(nextSlide);
+  }, 3000);
+}
 
 const renderCarousel = (images) => {
   const container = document.querySelector('.carousel');
@@ -31,6 +39,7 @@ const renderImageSelectors = (count) => {
   }
 
   navButtonInit(count);
+  startTimer(count);
 }
 
 const navButtonInit = (count) => {
@@ -39,12 +48,13 @@ const navButtonInit = (count) => {
   const handleClick = (isNext) => {
     const nextSlide = activeSlide + 1 === count ? 0 : activeSlide + 1;
     const previousSlide = activeSlide === 0 ? count - 1 : activeSlide - 1;
-    isNext ? changeSlide(nextSlide) : changeSlide(previousSlide)
+    isNext ? changeSlide(nextSlide) : changeSlide(previousSlide);
+    clearInterval(interval)
+    startTimer(count);
   }
   nextBtn.addEventListener('click', () => handleClick(true));
   previousBtn.addEventListener('click', () => handleClick(false));
 }
-
 
 const changeSlide = (index) => {
   const container = document.querySelector('.carousel');
