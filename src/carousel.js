@@ -34,7 +34,11 @@ const renderImageSelectors = (count) => {
     if (i === activeSlide) {
       selector.setAttribute('class', 'active')
     }
-    selector.addEventListener('click', (e) => changeSlide(e.currentTarget.dataset.index));
+    selector.addEventListener('click', (e) => {
+      changeSlide(Number(e.currentTarget.dataset.index));
+      clearInterval(interval)
+      startTimer(count);
+    });
     container.appendChild(selector);
   }
 
@@ -49,6 +53,7 @@ const navButtonInit = (count) => {
     const nextSlide = activeSlide + 1 === count ? 0 : activeSlide + 1;
     const previousSlide = activeSlide === 0 ? count - 1 : activeSlide - 1;
     isNext ? changeSlide(nextSlide) : changeSlide(previousSlide);
+    
     clearInterval(interval)
     startTimer(count);
   }
