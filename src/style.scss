@@ -1,0 +1,84 @@
+* {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+}
+
+.container {
+  max-height: 100dvh;
+  max-width: 100dvw;
+  position: relative;
+}
+
+.carousel {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  height: 100%;
+  .slide {
+    width: 100%;
+    max-height: 100dvh;
+    display: none;
+    overflow: hidden;
+    &.active {
+      display: block;
+    }
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+button {
+  --border-size: 21px;
+  --border-size-pointer: 27px;
+  --content-size: 20px;
+  --content-size-pointer: 25px;
+  --border-color: black;
+  --color: white;
+  --x-padding: 0.5rem;
+  position: absolute;
+  top: 50%;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  &.previous {
+    left: var(--x-padding);
+    width: 0; 
+    height: 0; 
+    border-top: var(--border-size) solid transparent;
+    border-bottom: var(--border-size) solid transparent; 
+    border-right: var(--border-size-pointer) solid var(--border-color);
+    &::after {
+      content: '';
+      position: absolute;
+      top: -20px;
+      left: 1px;
+      width: 0;
+      height: 0; 
+      border-top: var(--content-size) solid transparent;
+      border-bottom: var(--content-size) solid transparent;
+      border-right: var(--content-size-pointer) solid var(--color);
+    }
+  }
+  &.next {
+    right: var(--x-padding);
+    width: 0; 
+    height: 0; 
+    border-top: var(--border-size) solid transparent;
+    border-bottom: var(--border-size) solid transparent;
+    border-left: var(--border-size-pointer) solid var(--border-color);
+    &::after {
+      content: '';
+      position: absolute;
+      top: -20px;
+      right: 1px;
+      width: 0;
+      height: 0; 
+      border-top: var(--content-size) solid transparent;
+      border-bottom: var(--content-size) solid transparent;
+      border-left: var(--content-size-pointer) solid var(--color);
+    }
+  }
+}
